@@ -1,0 +1,190 @@
+﻿@model IEnumerable<ThuVien.Models.Sach>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống thư viện THPT Phú Bình</title>
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="~/assets/css/base.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/header_menu.css">
+    <link rel="stylesheet" href="~/assets/css/container.css">
+    <style>
+        .task__manage {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .add_book{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="header">
+            <div class="grid">
+                <!-- Header with search -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <img src="~/assets/img/logo.png" alt="" class="header__logo-img">
+                        <h1 class="header__logo-title">THƯ VIỆN<br>TRƯỜNG THPT PHÚ BÌNH</h1>
+                    </div>
+
+                    <div class="header__search">
+                        <input type="text" class="auth-form__input search-input" id="searchString" name="" placeholder="Tìm kiếm sách...">
+                        <i class="fa-solid fa-magnifying-glass search-icon" id="search_btn"></i>
+                        <script>
+                            var search = document.getElementById("search_btn");
+                      
+
+                            search.addEventListener("click", function () {
+                                
+                                var searchString = document.getElementById("searchString").value;
+                                let link = "/Saches/Index?searchString=" + searchString;
+                                console.log(searchString);
+                                window.location.href = link;
+                            });
+                        </script>
+                        
+                    </div>
+
+                    <a class="header__menu">
+                        <i class="fa-solid fa-bars menu_icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            
+
+            <div class="grid container__content">
+                <div class="container__category">
+                    <ul class="category__list">
+                        <li class="category__item">
+                            <a href="~/Saches/Index" class="task__manage">
+                                Quản lý sách
+                            </a>
+                        </li>
+                        <li class="category__item">
+                            <a href="~/DocGias/Index" class="task__manage">
+                                Quản lý độc giả
+                            </a>
+                        </li>
+                        <li class="category__item">
+                            <a href="~/Saches/Index" class="task__manage">
+                                Quản lý mượn
+                            </a>
+                        </li>
+                        <li class="category__item">
+                            <a href="~/Saches/Index" class="task__manage">
+                                Quản lý trả
+                            </a>
+                        </li>
+                        <li class="category__item">
+                            <a href="~/TheLoais/Index" class="task__manage">
+                                Quản lý thể loại
+                            </a>
+                        </li>
+                        <li class="category__item">
+                            <a href="~/Saches/Index" class="task__manage">
+                                Thống kê
+                            </a>
+                        </li>
+                        <li class="category__item task__manage add_book">@Html.ActionLink("Thêm sách", "Create")</li>
+                        
+
+                    </ul>
+                </div>
+
+                <div class="container__books">
+                    <ul class="header__books">
+                        <li class="header__book-item-Check">
+
+                        </li>
+
+                        <li class="header__book-item-Id">
+                            @Html.DisplayNameFor(model => model.MaSach)
+                        </li>
+
+                        <li class="header__book-item-Name">
+                            @Html.DisplayNameFor(model => model.TenSach)
+                        </li>
+
+                        <li class="header__book-item-Author">
+                            @Html.DisplayNameFor(model => model.TenTG)
+                        </li>
+
+                        <li class="header__book-item-Cate">
+                            @Html.DisplayNameFor(model => model.TheLoai.TenTL)
+                        </li>
+
+                        <li class="header__book-item-Year">
+                            @Html.DisplayNameFor(model => model.SoLuong)
+                        </li>
+
+                        <li class="header__book-item-Menu">
+                            Thao tác
+                        </li>
+                    </ul>
+                    <div id="container__list">
+                        <script>
+                            let hight = screen.availHeight;
+                            hight = hight - 190;
+                            let container__list = document.getElementById("container__list");
+                            console.log(hight);
+                            container__list.style.height = hight.toString() + "px";
+                            container__list.style.overflow = "auto";
+                        </script>
+
+
+
+                        <ul class="book__list">
+                            @foreach (var item in Model)
+                            {
+                                <li class="book__item">
+                                    <input type="checkbox" class="check__item-book" id="book5">
+                                    <h1 class="book__id">@Html.DisplayFor(modelItem => item.MaSach)</h1>
+                                    <p class="book__name">@Html.DisplayFor(modelItem => item.TenSach)</p>
+                                    <p class="book__author">@Html.DisplayFor(modelItem => item.TenTG)</p>
+                                    <p class="book__cate">@Html.DisplayFor(modelItem => item.TheLoai.TenTL)</p>
+                                    <p class="book__year">@Html.DisplayFor(modelItem => item.SoLuong)</p>
+                                    <ul class="book__menu">
+                                        <li class="book__menu-item">@Html.ActionLink("Sửa", "Edit", new { id = item.MaSach })</li>
+                                        <li class="book__menu-item">@Html.ActionLink("Xóa", "Delete", new { id = item.MaSach })</li>
+                                    </ul>
+                                </li>
+                            }
+
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿@model ThuVien.Models.DocGia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>DocGia</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MaDG)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaDG)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TenDG)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenDG)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgheNghiep)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgheNghiep)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sdt)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoaiDG)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoaiDG)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ThoiHan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ThoiHan)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaDG }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

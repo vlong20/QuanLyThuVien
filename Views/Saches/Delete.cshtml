@@ -1,0 +1,161 @@
+﻿@model ThuVien.Models.Sach
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống thư viện THPT Phú Bình</title>
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/css/normalize.min.css">
+    <link rel="stylesheet" href="~/assets/css/base.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/header_menu.css">
+    <link rel="stylesheet" href="~/assets/css/container.css">
+
+
+    <style>
+        .container__content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form__tt {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 600px;
+            height: 30px;
+            font-size: 16px;
+        }
+
+        .title_Form {
+            height: 30px;
+            font-size: 24px;
+        }
+
+        .btn__add {
+            font-size: 20px;
+            width: 300px;
+            height: 40px;
+            margin: 30px auto 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+            .btn__add:hover {
+                border: 1px solid var(--border-color);
+                box-shadow: 1px 2px 3px var(--border-color);
+                background-color: #f6f8fc;
+            }
+
+        .color__danger {
+            font-weight:600;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="header">
+            <div class="grid">
+                <!-- Header with search -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <img src="~/assets/img/logo.png" alt="" class="header__logo-img">
+                        <h1 class="header__logo-title">THƯ VIỆN<br>TRƯỜNG THPT PHÚ BÌNH</h1>
+                    </div>
+
+                    <div class="header__search">
+                        <input type="text" class="auth-form__input search-input" id="" name="" placeholder="Tìm kiếm">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </div>
+
+                    <a class="header__menu">
+                        <i class="fa-solid fa-bars menu_icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+
+
+            <div class="grid container__content">
+                <h3 class="title_Form">Bạn có chắc muốn xóa nó chứ?</h3>
+                <div>
+                    <h4 class="title_Form" style="margin-top:0; margin-bottom:20px;">Form xóa sách</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt class="form__tt color__danger">
+                            @Html.DisplayNameFor(model => model.TenSach)
+                        </dt>
+
+                        <dd class="form__tt">
+                            @Html.DisplayFor(model => model.TenSach)
+                        </dd>
+
+                        <dt class="form__tt color__danger">
+                            @Html.DisplayNameFor(model => model.TenTG)
+                        </dt>
+
+                        <dd class="form__tt">
+                            @Html.DisplayFor(model => model.TenTG)
+                        </dd>
+
+                        <dt class="form__tt color__danger">
+                            @Html.DisplayNameFor(model => model.SoLuong)
+                        </dt>
+
+                        <dd class="form__tt">
+                            @Html.DisplayFor(model => model.SoLuong)
+                        </dd>
+
+                        <dt class="form__tt color__danger">
+                            @Html.DisplayNameFor(model => model.TheLoai.TenTL)
+                        </dt>
+
+                        <dd class="form__tt">
+                            @Html.DisplayFor(model => model.TheLoai.TenTL)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xóa" class="btn btn-default btn__add" style="background-color: var(--primary-color); color: var(--white-color); margin-top: 5px; margin-bottom: 10px;"  /> |
+                            <div class="btn__add" style="margin-top: 0;">
+                                @Html.ActionLink("Quay lại", "Index")
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="footer">
+
+        </div>
+    </div>
+
+
+
+
+    
+</body>
+</html>

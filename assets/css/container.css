@@ -196,5 +196,11 @@
     justify-content: space-around;
 }
 
+.book__menu-item {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+
 
 
